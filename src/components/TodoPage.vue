@@ -7,9 +7,25 @@ const handleSubmit = (todo) => {
   todoList.push(todo);
   console.log(todo, todoList);
 };
+const toggleCompleted=(id)=>{
+    todoList.forEach((todo)=>{
+      if(todo.id === id){
+        todo.completed= !todo.completed
+        // console.log(todoList)
+      }
+    })
+}
+const deleteTodo=(id)=>{
+    todoList.forEach((todo)=>{
+      if(todo.id === id){
+        todo.completed= !todo.completed
+        // console.log(todoList)
+      }
+    })
+}
 </script>
 
 <template>
   <InputTodo @todo-submitted="handleSubmit" />
-  <DisplayList :todoList="todoList" />
+  <DisplayList :todoList="todoList" @toogle-completed="toggleCompleted" @delete-todo=""/>
 </template>
