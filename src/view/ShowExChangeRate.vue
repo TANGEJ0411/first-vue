@@ -1,7 +1,6 @@
 <script setup>
 import { storeToRefs } from "pinia";
 import { useGetRate } from "../stores/useGetRate";
-import { onMounted } from "vue";
 
 const exchangeRate = useGetRate();
 const { exchangeRateList } = storeToRefs(exchangeRate);
@@ -13,7 +12,7 @@ const { exchangeRateList } = storeToRefs(exchangeRate);
     <h3>日期:{{ rate.Date }}</h3>
     <ul>
       <li>美金兌台幣{{ rate["USD/NTD"] }}</li>
-      <li>人民幣兌台幣{{ rate["RMD/NTD"] }}</li>
+      <li>人民幣兌台幣{{ rate["RMB/NTD"] }}</li>
       <li>美金兌日幣{{ rate["USD/JPY"] }}</li>
     </ul>
   </div>
