@@ -1,7 +1,8 @@
 <script setup>
 import { reactive } from "vue";
-import InputTodo from "./InputTodo.vue";
-import DisplayList from "./DisplayList.vue";
+import InputTodo from "../components/InputTodo.vue";
+import DisplayList from "../components/DisplayList.vue";
+import HelloWorld from "../components/HelloWorld.vue";
 const todoList = reactive([]);
 const handleSubmit = (todo) => {
   todoList.push(todo);
@@ -31,4 +32,5 @@ const deleteTodo = (id) => {
     @toogle-completed="toggleCompleted"
     @delete-todo="deleteTodo"
   />
+  <HelloWorld />
 </template>

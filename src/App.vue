@@ -1,13 +1,13 @@
 <script setup>
-import HelloWorld from "./components/HelloWorld.vue";
-import MyFirstComp from "./components/MyFirstComp.vue";
-import TodoPage from "./components/TodoPage.vue";
+import { RouterLink, RouterView } from "vue-router";
 </script>
 
 <template>
   <!-- <HelloWorld msg="Vite 加上 Vue" /> -->
   <!-- <MyFirstComp /> -->
-  <TodoPage />
+  <RouterLink to="/">todo list</RouterLink>
+  <RouterLink to="/exchangeRate">exchange rate</RouterLink>
+  <RouterView />
 </template>
 
 <style scoped></style>

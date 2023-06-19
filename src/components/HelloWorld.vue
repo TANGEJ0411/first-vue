@@ -1,16 +1,14 @@
 <script setup>
-import { ref } from "vue";
-
-defineProps({
-  msg: String,
-});
-
-const count = ref(0);
+import { useCounterStore } from "../stores/useCountStore.js";
+import { storeToRefs } from "pinia";
+const store = useCounterStore();
+const { count, name, doubleCount } = storeToRefs(store);
+const { increment } = store;
 </script>
 
 <template>
-  <h1>{{ msg }}</h1>
-  <button type="button" @click="count++">count is {{ count }}</button>
+  <button type="button" @click="increment">按我</button>
+  <p>count is {{ count }} name is {{ name }} double is {{ doubleCount }}</p>
 </template>
 
 <style scoped></style>
