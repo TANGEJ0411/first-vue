@@ -3,6 +3,7 @@ import { ref } from "vue";
 import { useGetRate } from "../stores/useGetRate";
 const rate = useGetRate();
 let NTD = ref("");
+//定義emit使是見可以往上傳defineEmits有一個陣列參數，放自定義事件string
 const emit = defineEmits(["NTD-submitted"]);
 const handleSubmit = () => {
   emit("NTD-submitted", NTD.value);

@@ -6,7 +6,7 @@ import { useGetRate } from "../stores/useGetRate";
 const rate = useGetRate();
 
 let lastestRate = null;
-
+//定義響應式物件
 const allRate = reactive({
   USD: "",
   RMB: "",
@@ -17,7 +17,7 @@ const allRate = reactive({
 const calcRate = (NTD) => {
   //指定最近一天的匯率
   lastestRate = rate.exchangeRateList[rate.exchangeRateList.length - 1];
-
+  //計算匯率，是否改成switch?
   allRate.USD = (NTD / lastestRate["USD/NTD"]).toFixed(2);
   allRate.RMB = (NTD / lastestRate["RMB/NTD"]).toFixed(2);
   allRate.JYP = (
