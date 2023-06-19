@@ -7,6 +7,7 @@ import { RouterLink, RouterView } from "vue-router";
   <!-- <MyFirstComp /> -->
   <RouterLink to="/">todo list</RouterLink>
   <RouterLink to="/exchangeRate">exchange rate</RouterLink>
+  <RouterLink to="/CountRate">CountRate</RouterLink>
   <RouterView />
 </template>
 

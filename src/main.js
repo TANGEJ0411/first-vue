@@ -5,6 +5,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import { createPinia } from 'pinia'
 import TodoPage from './view/TodoPage.vue'
 import ShowExChangeRate from './view/ShowExChangeRate.vue'
+import CountRate from './view/CountRate.vue'
 
 const pinia = createPinia()
 
@@ -20,6 +21,11 @@ const router = createRouter({
             path: '/exchangeRate',
             name: 'exchangeRate',
             component: ShowExChangeRate
+        },
+        {
+            path: '/countRate',
+            name: 'countRate',
+            component: CountRate
         },
         // {
         //     // 動態參數

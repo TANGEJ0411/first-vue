@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, reactive } from "vue";
+import { reactive } from "vue";
 const todo = reactive({
   id: "",
   content: "",

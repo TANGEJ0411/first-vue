@@ -1,26 +1,15 @@
 <script setup>
-import axios from "axios";
-import { onMounted, reactive } from "vue";
+import { storeToRefs } from "pinia";
+import { useGetRate } from "../stores/useGetRate";
+import { onMounted } from "vue";
 
-const url = "https://openapi.taifex.com.tw/v1/DailyForeignExchangeRates";
-const cros = "https://cors-anywhere.herokuapp.com/";
-
-const exchangeRate = reactive([]);
-const getExchangeRate = async () => {
-  const response = await axios.get(`${cros}${url}`, {
-    headers: { "content-type": "application/json" },
-  });
-  console.log(response.data);
-  response.data.forEach((rate) => exchangeRate.push(rate));
-};
-onMounted(() => {
-  getExchangeRate();
-});
+const exchangeRate = useGetRate();
+const { exchangeRateList } = storeToRefs(exchangeRate);
 </script>
 
 <template>
   <h1>近30日匯率</h1>
-  <div v-for="rate in exchangeRate">
+  <div v-for="rate in exchangeRateList">
     <h3>日期:{{ rate.Date }}</h3>
     <ul>
       <li>美金兌台幣{{ rate["USD/NTD"] }}</li>
