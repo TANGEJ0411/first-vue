@@ -10,7 +10,7 @@ import CountRate from './view/CountRate.vue'
 const pinia = createPinia()
 
 const router = createRouter({
-    history: createWebHistory(),
+    history: createWebHistory("/admin"),
     routes: [
         {
             path: '/',
@@ -53,7 +53,34 @@ const router = createRouter({
         // }
     ]
 })
+// 跑不動的範例code
+const isLoginState = useHandleLogin()
+const { isLogin } = storeToRefs(isLoginState)
+const { checkLoginStatus } = isLoginState
 
+router.beforeEach(async (to, from, next) => {
+    // console.log(1)
+    await checkLoginStatus()
+    // console.log(to.name, isLogin.value)
+    // if (to.name !== 'login' && !isLogin.value) {
+    //     next({ name: 'login' });
+    //     store.commit('setLayout', 'auth');
+    // } else {
+    //     next();
+    // }
+
+    if (to.name !== 'login' && !isLogin.value) {
+        store.commit('setLayout', 'auth');
+        next({ name: 'login' });
+    }
+    else if (to.meta && to.meta.layout && to.meta.layout == 'auth') {
+        store.commit('setLayout', 'auth');
+        next();
+    } else {
+        store.commit('setLayout', 'app');
+        next();
+    }
+});
 
 createApp(App).use(router).use(pinia).mount('#app')
 

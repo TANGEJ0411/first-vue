@@ -3,6 +3,7 @@ import { storeToRefs } from "pinia";
 import { useGetRate } from "../stores/useGetRate";
 
 const exchangeRate = useGetRate();
+//storeToRefs維持響應式的資料
 const { exchangeRateList } = storeToRefs(exchangeRate);
 </script>
 
